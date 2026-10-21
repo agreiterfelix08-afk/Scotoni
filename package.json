@@ -1,0 +1,17 @@
+{
+  "name": "rifugio-scotoni-website",
+  "private": true,
+  "version": "2.0.0",
+  "description": "Website and table reservation prototype for Rifugio Scotoni, Alta Badia",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "lint": "node scripts/lint.mjs",
+    "test": "node --test --experimental-test-coverage --test-coverage-include='src/reservation-engine/**' --test-coverage-exclude='**/*.stub.js' --test-coverage-lines=90 --test-coverage-branches=80 --test-coverage-functions=90 'test/*.test.js'",
+    "check": "npm run build && npm run lint && npm test",
+    "serve": "python3 -m http.server 8000"
+  }
+}
