@@ -3,7 +3,7 @@
 // Prototype: the engine runs in the browser on top of LocalStorageStore (works offline).
 // Going live with a backend is a one-line change — replace the `engine` export with:
 //   export const engine = createRemoteEngine("https://<your-server>/reservations");
-// (see src/reservation-engine/remote-engine.stub.js and docs/RESERVATIONS.md → Backend).
+// (see src/reservation-engine/remote-engine.stub.js and docs/TECHNICAL.md → Backend).
 
 import { createEngine } from "../reservation-engine/engine.js";
 import { LocalStorageStore } from "../reservation-engine/stores/local-storage-store.js";

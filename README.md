@@ -1,32 +1,41 @@
-# Scotoni
+# Rifugio Scotoni: website and table reservations
 
-Reservation website for Scotoni, a mountain hut restaurant in the Dolomites.
+Website of Rifugio Scotoni (Alta Badia, Dolomites) in Italian, German and English, with a working
+prototype of a fair table reservation system.
 
-Static site (plain HTML/CSS/JS, no build step):
+- **Live site (GitHub Pages):** https://agreiterfelix08-afk.github.io/Scotoni/
+- **Book a table:** `/it/reserve.html` · **Staff dashboard:** `/it/admin.html` (prototype PINs: staff `1111`, owner `2222`)
 
-- `index.html` – landing page (about, menu, hours) and booking form
-- `styles.css` – styles, including dark mode and mobile layout
-- `script.js` – reservation logic
+## For the hut
 
-## Features
+| Document | What it is |
+|---|---|
+| [docs/RESERVATIONS.md](docs/RESERVATIONS.md) | How the booking rules work, in plain language, with a Saturday example. Includes a short version for guests. |
+| [docs/TODO-FOR-THE-HUT.md](docs/TODO-FOR-THE-HUT.md) | Every value we still need from you (altitude, hours, tables, prices, photos, Ega Scotoni …). |
+| [docs/REVIEW.md](docs/REVIEW.md) | Audit of the first version and what was fixed. |
+| [docs/TECHNICAL.md](docs/TECHNICAL.md) | Architecture, commands, how to connect a real backend. |
 
-- Lunch time slots (11:30–14:30) with per-slot seat capacity
-- Validation: no past dates, bookings up to 120 days ahead, 1–12 guests, closed in May and November
-- Confirmation with a booking reference, plus a "Your reservations" list with cancel
+Almost everything you'll want to change is in **`src/data/hut.config.js`**.
 
-## Run locally
+## Showing the reservation system in a meeting
+
+1. Open `/de/admin.html` (or `/it/`, `/en/`), log in with a name and PIN `2222`.
+2. Pick a day and click **Load demo day**.
+3. Show the timeline, then switch **Weather → Rain: terrace closed** and look at the list of affected bookings.
+4. In another tab, book a table on `/de/reserve.html` for the same day. It appears in the dashboard straight away.
+5. Make a phone booking with "override": it asks for a reason, and the reason shows up in the audit log.
+
+The prototype keeps all data in the browser, so it works offline, but bookings made on one device
+are not visible on another. See "Before going live" in the to-do file.
+
+## Development
+
+Requires Node 22+. No dependencies to install.
 
 ```sh
-python3 -m http.server 8000
+npm run build   # regenerate it/ de/ en/ from src/
+npm run check   # build + lint + tests
+npm run serve   # http://localhost:8000
 ```
 
-Then open http://localhost:8000.
-
-## Receiving real bookings
-
-Bookings are currently stored only in the visitor's browser (`localStorage`).
-To have them sent to you, set `SUBMIT_URL` at the top of `script.js` to a form
-endpoint (for example a Formspree form URL); each booking is POSTed as JSON.
-
-Capacity (`SEATS_PER_SLOT`), time slots (`TIME_SLOTS`) and booking window
-(`MAX_DAYS_AHEAD`) are configured at the top of `script.js`.
+The pages in `it/`, `de/`, `en/` are generated: edit `src/`, then run `npm run build` and commit both.

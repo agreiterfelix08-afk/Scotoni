@@ -3,7 +3,7 @@
 //  - Shared assets of this version are precached at install.
 //  - Pages: network first with a short timeout, falling back to the cached copy.
 //  - Assets: cache first (they are versioned by the cache name).
-const VERSION = "05cab9eec6d5";
+const VERSION = "288c67150e2e";
 const CACHE = `scotoni-${VERSION}`;
 const ASSETS = [
   "assets/icon.svg",

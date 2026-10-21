@@ -179,7 +179,7 @@ mobile; only "Book a table" remains, so mobile users cannot reach Menu/Hours fro
 *Fix:* accessible disclosure menu (button with `aria-expanded`).
 
 **A3 — medium.** No skip link (2.4.1). The sticky header overlaps headings after anchor jumps
-(2.4.11 Focus Not Obscured, new in 2.2). *Fix:* skip link + `scroll-margin-top`.
+(2.4.11 Focus Not Obscured, new in 2.2). *Fix:* skip link + `scroll-padding-top` matching the header height.
 
 **A4 — medium — `styles.css` `html { scroll-behavior: smooth }`.** Ignores
 `prefers-reduced-motion` (2.3.3 is AAA, but it is cheap and the new site has more motion).
@@ -192,7 +192,7 @@ is hard to see on the accent background (2.4.7). *Fix:* global `:focus-visible` 
 high (2.5.8 Target Size minimum 24 px). *Fix:* table semantics, ≥ 44 px targets.
 
 **A7 — low.** `--muted #6f655d` on `--bg-alt #f0ebe2` ≈ 4.9:1 — passes, but with little margin
-for the smaller meta text. Tokens adjusted; all text tokens ≥ 4.5:1 in both themes.
+for the smaller meta text. Tokens adjusted; every text/background token pair measures ≥ 5.3:1 in both themes.
 
 Heading order, landmarks (`header/nav/main/footer`) and labels were already correct.
 
@@ -265,6 +265,24 @@ notifier and payment provider by injection.
 component layer, `data-theme` override for the day/night toggle.
 
 ---
+
+## Results after the upgrade
+
+Measured on the rebuilt site (Lighthouse 12, mobile, simulated slow 4G, gzip as on GitHub Pages):
+
+| Page | Performance | Accessibility | Best Practices | SEO | LCP | CLS |
+|---|---|---|---|---|---|---|
+| `it/index.html` | 100 | 100 | 100 | 100 | 1.0 s | 0.002 |
+| `it/reserve.html` | 100 | 100 | 100 | 100 | 1.3 s | 0.012 |
+| `en/wine.html` | 100 | 100 | 100 | 100 | 1.2 s | 0 |
+| `de/ega-scotoni.html` | 100 | 100 | 100 | 100 | 1.2 s | 0 |
+
+Remaining Lighthouse hints: cache lifetime of GitHub Pages (10 min; not configurable there,
+mitigated by the service worker) and ~5 KB of unminified JS (deliberately not minified: no build
+dependency, readable source).
+
+Engine tests: 57 passing; coverage of `src/reservation-engine`: 100 % lines, 91 % branches,
+98.6 % functions. Lint: syntax, IT/DE/EN key and placeholder parity, built-HTML checks, safety rules.
 
 ## What was fixed vs. left for later
 

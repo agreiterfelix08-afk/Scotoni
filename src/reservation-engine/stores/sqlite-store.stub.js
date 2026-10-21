@@ -3,7 +3,7 @@
 // How to go live with a real backend:
 //  1. Run the same engine on a small Node server (e.g. Fastify/Express) with this
 //     store implemented on SQLite (better-sqlite3) or Postgres.
-//  2. Expose the engine methods as JSON endpoints (see docs/RESERVATIONS.md → "Backend").
+//  2. Expose the engine methods as JSON endpoints (see docs/TECHNICAL.md → "Backend").
 //  3. In src/js/store-setup.js replace `new LocalStorageStore()` with `new HttpEngineClient(url)`
 //     (the browser then calls the server instead of running the engine locally).
 //
