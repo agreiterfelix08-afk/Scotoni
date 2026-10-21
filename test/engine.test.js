@@ -143,6 +143,10 @@ describe("waitlist", () => {
     await engine.joinWaitlist(booking());
     await engine.joinWaitlist(booking());
     assert.equal((await engine.joinWaitlist(booking())).code, "waitlist_full");
+    const looked = await engine.getWaitlistEntry(a.token);
+    assert.equal(looked.entry.status, "waiting");
+    assert.equal(looked.entry.token, undefined);
+    assert.equal((await engine.getWaitlistEntry("short")).code, "not_found");
     assert.equal((await engine.leaveWaitlist(a.token)).ok, true);
     assert.equal((await engine.leaveWaitlist(a.token)).code, "not_cancellable");
     assert.equal((await engine.leaveWaitlist("nope")).code, "not_found");

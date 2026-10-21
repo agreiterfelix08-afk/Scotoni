@@ -455,6 +455,15 @@ export function createEngine({ config, store, clock = () => Date.now(), notifier
     });
   }
 
+  function getWaitlistEntry(token) {
+    return run((tx) => {
+      const w = typeof token === "string" && token.length >= 16 ? tx.all("waitlist").find((e) => e.token === token) : null;
+      if (!w) return fail("not_found");
+      const { token: _t, ...entry } = w;
+      return { ok: true, entry };
+    });
+  }
+
   function leaveWaitlist(token) {
     return run((tx) => {
       const w = tx.all("waitlist").find((e) => e.token === token);
@@ -901,7 +910,7 @@ export function createEngine({ config, store, clock = () => Date.now(), notifier
       const r = tryAllocate(tx, { date, slot, party, zones: candidateZones(options), iv, quota: options.quota ?? true });
       return r.tableIds ? { ok: true, ...r } : fail(r.error);
     }),
-    joinWaitlist, leaveWaitlist, promoteWaitlist, acceptOffer,
+    joinWaitlist, getWaitlistEntry, leaveWaitlist, promoteWaitlist, acceptOffer,
     setRainMode, releaseWalkInHold, addWalkIn, blockTable, closeZone, moveBooking, setStatus,
     getDay, quotaAt, getAuditLog, noShowList, exportCSV, purgeExpired, deleteGuestData,
   };

@@ -1,0 +1,141 @@
+<!--page {"key": "admin", "modules": ["admin"], "noindex": true, "styles": ["admin.css"], "feature": "onlineBooking"} -->
+<a class="skip-link" href="#main">{{a11y.skip}}</a>
+<header class="admin-header">
+  <a class="brand" href="index.html"><span>Rifugio <strong>Scotoni</strong></span></a>
+  <span class="admin-title">{{admin.title}}</span>
+  <div class="header-tools">{{$langSwitcher}}
+    <button class="theme-toggle" type="button" data-theme-toggle data-label-auto="{{theme.auto}}" data-label-day="{{theme.day}}" data-label-night="{{theme.night}}"><span class="sr-only">{{theme.toggle}}: </span><span data-theme-label>{{theme.auto}}</span></button>
+  </div>
+  <div class="admin-user" data-admin-user hidden><span data-admin-whoami></span> <button class="link-btn" type="button" data-logout>{{admin.logout}}</button></div>
+</header>
+<main id="main" class="admin" data-module="admin">
+  <h1 class="sr-only">{{admin.title}}</h1>
+  <noscript><p class="note">{{admin.noscript}}</p></noscript>
+
+  <form class="form login" data-login hidden>
+    <h2>{{admin.login_title}}</h2>
+    <p class="note">{{admin.login_note}}</p>
+    <div class="field"><label for="l-name">{{admin.login_name}}</label><input id="l-name" name="name" autocomplete="name" required maxlength="40"></div>
+    <div class="field"><label for="l-pin">{{admin.login_pin}}</label><input id="l-pin" name="pin" type="password" inputmode="numeric" autocomplete="current-password" required aria-describedby="l-pin-err"><p class="field-error" id="l-pin-err"></p></div>
+    <button class="btn" type="submit">{{admin.login_submit}}</button>
+  </form>
+
+  <div class="dashboard" data-dashboard hidden>
+    <div class="toolbar" role="toolbar" aria-label="{{admin.date}}">
+      <button class="btn btn-small btn-ghost" type="button" data-day="-1" aria-label="{{admin.prev}}">‹</button>
+      <label class="sr-only" for="a-date">{{admin.date}}</label>
+      <input id="a-date" type="date" data-date>
+      <button class="btn btn-small btn-ghost" type="button" data-day="1" aria-label="{{admin.next}}">›</button>
+      <button class="btn btn-small btn-ghost" type="button" data-today>{{admin.today}}</button>
+      <span class="toolbar-status" data-day-status aria-live="polite"></span>
+    </div>
+    <p class="toast" data-toast role="status" aria-live="polite" hidden></p>
+
+    <section class="panel stats" aria-labelledby="stats-title">
+      <h2 id="stats-title">{{admin.stats}}</h2>
+      <dl class="stat-tiles" data-stats></dl>
+      <div class="quota" data-quota></div>
+    </section>
+
+    <section class="panel quick" aria-labelledby="quick-title">
+      <h2 id="quick-title">{{admin.quick}}</h2>
+      <div class="quick-grid">
+        <form class="mini-form" data-walkin>
+          <h3>{{admin.walkin}}</h3>
+          <div class="inline-fields">
+            <label>{{admin.walkin_party}} <input name="party" type="number" min="1" max="30" value="2" required></label>
+            <label>{{admin.walkin_time}} <input name="time" type="time"></label>
+            <label>{{admin.walkin_table}} <select name="table" data-table-select><option value="">{{admin.walkin_auto}}</option></select></label>
+            <label>{{admin.walkin_name}} <input name="name" maxlength="40"></label>
+          </div>
+          <button class="btn btn-small" type="submit">{{admin.add}}</button>
+        </form>
+        <div class="mini-form">
+          <h3>{{admin.rain}}</h3>
+          <div class="segmented" role="radiogroup" aria-label="{{admin.rain}}" data-rain>
+            <label><input type="radio" name="rain" value="off"> {{admin.rain_off}}</label>
+            <label><input type="radio" name="rain" value="reduced"> {{admin.rain_reduced}}</label>
+            <label><input type="radio" name="rain" value="closed"> {{admin.rain_closed}}</label>
+          </div>
+          <div class="rain-result" data-rain-result aria-live="polite"></div>
+        </div>
+        <div class="mini-form">
+          <h3>{{admin.hold_status}}</h3>
+          <p data-hold-text></p>
+          <button class="btn btn-small btn-ghost" type="button" data-release>{{admin.release}}</button>
+        </div>
+        <form class="mini-form" data-block-form>
+          <h3>{{admin.block}} / {{admin.close_zone}}</h3>
+          <div class="inline-fields">
+            <label>{{admin.table}} <select name="table" data-table-select-block></select></label>
+            <button class="btn btn-small btn-ghost" type="submit" data-block-toggle>{{admin.block}}</button>
+          </div>
+          <div class="inline-fields" data-zone-buttons></div>
+        </form>
+        <form class="mini-form" data-phone-booking>
+          <h3>{{admin.phone_book}}</h3>
+          <div class="inline-fields">
+            <label>{{admin.walkin_party}} <input name="party" type="number" min="1" max="40" value="2" required></label>
+            <label>{{admin.slot}} <select name="slot" data-slot-select></select></label>
+            <label>{{admin.zone}} <select name="zone" data-zone-select></select></label>
+            <label>{{form.name}} <input name="name" required maxlength="80"></label>
+            <label>{{form.email}} <input name="email" type="email" required></label>
+            <label>{{form.phone}} <input name="phone" type="tel" required></label>
+          </div>
+          <div class="check"><input id="pb-override" name="override" type="checkbox"><label for="pb-override">{{admin.phone_book_override}}</label></div>
+          <button class="btn btn-small" type="submit">{{admin.add}}</button>
+        </form>
+        <div class="mini-form">
+          <h3>{{admin.demo}}</h3>
+          <p class="muted">{{admin.demo_text}}</p>
+          <button class="btn btn-small" type="button" data-load-demo>{{admin.load_demo}}</button>
+          <button class="btn btn-small btn-ghost" type="button" data-reset-demo>{{admin.reset_demo}}</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel timeline-panel" aria-labelledby="timeline-title">
+      <h2 id="timeline-title">{{admin.timeline}}</h2>
+      <p class="muted">{{admin.drag_hint}}</p>
+      <div class="legend" data-legend></div>
+      <div class="timeline" data-timeline></div>
+    </section>
+
+    <div class="panel-row">
+      <section class="panel" aria-labelledby="wait-title"><h2 id="wait-title">{{admin.waitlist}}</h2><div data-waitlist></div></section>
+      <section class="panel" aria-labelledby="ns-title"><h2 id="ns-title">{{admin.noshows}}</h2><div data-noshows></div></section>
+    </div>
+    <section class="panel" aria-labelledby="outbox-title"><h2 id="outbox-title">{{admin.outbox}}</h2><div data-outbox></div></section>
+    <section class="panel owner-only" aria-labelledby="audit-title" data-owner-panel>
+      <h2 id="audit-title">{{admin.audit}} <span class="badge">{{admin.owner_only}}</span></h2>
+      <div class="owner-actions">
+        <button class="btn btn-small btn-ghost" type="button" data-export>{{admin.export}}</button>
+        <button class="btn btn-small btn-ghost" type="button" data-purge>{{admin.purge}}</button>
+        <form class="inline-fields" data-delete-guest>
+          <label>{{admin.delete_email}} <input name="email" type="email" required></label>
+          <button class="btn btn-small btn-danger" type="submit">{{admin.delete_submit}}</button>
+        </form>
+      </div>
+      <div data-audit></div>
+    </section>
+  </div>
+
+  <aside class="drawer" data-drawer hidden aria-labelledby="drawer-title" tabindex="-1">
+    <div class="drawer-head"><h2 id="drawer-title">{{admin.details}}</h2><button class="link-btn" type="button" data-drawer-close>{{admin.close}}</button></div>
+    <div data-drawer-body></div>
+  </aside>
+
+  <dialog class="reason-dialog" data-reason-dialog aria-labelledby="reason-title">
+    <form method="dialog" data-reason-form>
+      <h2 id="reason-title">{{admin.reason_title}}</h2>
+      <p class="muted" data-reason-context></p>
+      <p class="muted">{{admin.reason_help}}</p>
+      <label class="sr-only" for="reason-text">{{admin.reason_title}}</label>
+      <textarea id="reason-text" name="reason" rows="3" maxlength="300" required></textarea>
+      <div class="step-actions">
+        <button class="btn btn-ghost" type="button" value="cancel" data-reason-cancel>{{admin.reason_cancel}}</button>
+        <button class="btn" type="submit" value="ok">{{admin.reason_ok}}</button>
+      </div>
+    </form>
+  </dialog>
+</main>

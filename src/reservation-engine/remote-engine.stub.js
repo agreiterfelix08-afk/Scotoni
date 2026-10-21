@@ -11,7 +11,7 @@
 
 const METHODS = [
   "getAvailability", "createBooking", "cancelBooking", "changeBooking", "getBookingByToken",
-  "joinWaitlist", "leaveWaitlist", "acceptOffer", "promoteWaitlist",
+  "joinWaitlist", "getWaitlistEntry", "leaveWaitlist", "acceptOffer", "promoteWaitlist",
   "setRainMode", "releaseWalkInHold", "addWalkIn", "blockTable", "closeZone", "moveBooking", "setStatus",
   "getDay", "quotaAt", "getAuditLog", "noShowList", "exportCSV", "purgeExpired", "deleteGuestData",
 ];
