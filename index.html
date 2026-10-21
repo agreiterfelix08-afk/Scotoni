@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rifugio Scotoni</title>
+  <meta name="description" content="Rifugio a conduzione familiare sotto il Lagazuoi in Alta Badia: griglia a vista, Kaiserschmarrn, circa 700 vini e camere semplici. Prenota il tuo tavolo online.">
+  <link rel="canonical" href="https://agreiterfelix08-afk.github.io/Scotoni/it/">
+  <link rel="alternate" hreflang="it" href="https://agreiterfelix08-afk.github.io/Scotoni/it/">
+  <link rel="alternate" hreflang="de" href="https://agreiterfelix08-afk.github.io/Scotoni/de/">
+  <link rel="alternate" hreflang="en" href="https://agreiterfelix08-afk.github.io/Scotoni/en/">
+  <link rel="alternate" hreflang="x-default" href="https://agreiterfelix08-afk.github.io/Scotoni/">
+  <script>
+    (function () {
+      var langs = ["it","de","en"], pick = null;
+      try { pick = localStorage.getItem("scotoni-lang"); } catch (e) {}
+      if (langs.indexOf(pick) < 0) {
+        pick = null;
+        var prefs = navigator.languages || [navigator.language || ""];
+        for (var i = 0; i < prefs.length && !pick; i++) {
+          var code = String(prefs[i]).slice(0, 2).toLowerCase();
+          if (langs.indexOf(code) >= 0) pick = code;
+        }
+      }
+      location.replace((pick || "it") + "/" + location.search + location.hash);
+    })();
+  </script>
+  <noscript><meta http-equiv="refresh" content="0; url=it/"></noscript>
+</head>
+<body>
+  <p>Rifugio Scotoni: <a href="it/" hreflang="it" lang="it">Italiano</a> · <a href="de/" hreflang="de" lang="de">Deutsch</a> · <a href="en/" hreflang="en" lang="en">English</a></p>
+</body>
+</html>

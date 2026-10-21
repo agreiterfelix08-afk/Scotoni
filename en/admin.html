@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Staff dashboard – Rifugio Scotoni</title>
+  <meta name="description" content="Staff dashboard.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Rifugio Scotoni">
+  <meta property="og:title" content="Staff dashboard – Rifugio Scotoni">
+  <meta property="og:description" content="Staff dashboard.">
+  <meta property="og:url" content="https://agreiterfelix08-afk.github.io/Scotoni/en/admin.html">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:locale:alternate" content="it_IT">
+  <meta property="og:locale:alternate" content="de_DE">
+  <meta name="twitter:card" content="summary">
+  <meta name="theme-color" content="#f6f1e7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#151a2b" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+  <script>try{var t=localStorage.getItem("scotoni-theme");if(t==="day"||t==="night")document.documentElement.dataset.theme=t==="day"?"light":"dark"}catch(e){}</script>
+  <link rel="stylesheet" href="../src/styles/main.css">
+  <link rel="stylesheet" href="../src/styles/admin.css">
+  <script type="module" src="../src/js/site.js"></script>
+  
+</head>
+<body data-page="admin">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="admin-header">
+  <a class="brand" href="index.html"><span>Rifugio <strong>Scotoni</strong></span></a>
+  <span class="admin-title">Staff dashboard</span>
+  <div class="header-tools"><ul class="lang-switch" aria-label="Language"><li><a href="../it/admin.html" hreflang="it" lang="it" data-set-lang="it" aria-label="Italiano">IT</a></li><li><a href="../de/admin.html" hreflang="de" lang="de" data-set-lang="de" aria-label="Deutsch">DE</a></li><li><a href="../en/admin.html" hreflang="en" lang="en" data-set-lang="en" aria-label="English" aria-current="true">EN</a></li></ul>
+    <button class="theme-toggle" type="button" data-theme-toggle data-label-auto="Auto" data-label-day="Day" data-label-night="Night"><span class="sr-only">Switch between day and night theme: </span><span data-theme-label>Auto</span></button>
+  </div>
+  <div class="admin-user" data-admin-user hidden><span data-admin-whoami></span> <button class="link-btn" type="button" data-logout>Log out</button></div>
+</header>
+<main id="main" class="admin" data-module="admin">
+  <h1 class="sr-only">Staff dashboard</h1>
+  <noscript><p class="note">The dashboard needs JavaScript.</p></noscript>
+
+  <form class="form login" data-login hidden>
+    <h2>Staff login</h2>
+    <p class="note">Prototype login: the PINs are in the config file. This is not security – a real login comes with the backend.</p>
+    <div class="field"><label for="l-name">Your name</label><input id="l-name" name="name" autocomplete="name" required maxlength="40"></div>
+    <div class="field"><label for="l-pin">PIN</label><input id="l-pin" name="pin" type="password" inputmode="numeric" autocomplete="current-password" required aria-describedby="l-pin-err"><p class="field-error" id="l-pin-err"></p></div>
+    <button class="btn" type="submit">Log in</button>
+  </form>
+
+  <div class="dashboard" data-dashboard hidden>
+    <div class="toolbar" role="toolbar" aria-label="Day">
+      <button class="btn btn-small btn-ghost" type="button" data-day="-1" aria-label="Previous day">‹</button>
+      <label class="sr-only" for="a-date">Day</label>
+      <input id="a-date" type="date" data-date>
+      <button class="btn btn-small btn-ghost" type="button" data-day="1" aria-label="Next day">›</button>
+      <button class="btn btn-small btn-ghost" type="button" data-today>Today</button>
+      <span class="toolbar-status" data-day-status aria-live="polite"></span>
+    </div>
+    <p class="toast" data-toast role="status" aria-live="polite" hidden></p>
+
+    <section class="panel stats" aria-labelledby="stats-title">
+      <h2 id="stats-title">The day in numbers</h2>
+      <dl class="stat-tiles" data-stats></dl>
+      <div class="quota" data-quota></div>
+    </section>
+
+    <section class="panel quick" aria-labelledby="quick-title">
+      <h2 id="quick-title">Quick actions</h2>
+      <div class="quick-grid">
+        <form class="mini-form" data-walkin>
+          <h3>Add walk-in</h3>
+          <div class="inline-fields">
+            <label>People <input name="party" type="number" min="1" max="30" value="2" required></label>
+            <label>Time <input name="time" type="time"></label>
+            <label>Table <select name="table" data-table-select><option value="">Automatic</option></select></label>
+            <label>Name (optional) <input name="name" maxlength="40"></label>
+          </div>
+          <button class="btn btn-small" type="submit">Add</button>
+        </form>
+        <div class="mini-form">
+          <h3>Weather</h3>
+          <div class="segmented" role="radiogroup" aria-label="Weather" data-rain>
+            <label><input type="radio" name="rain" value="off"> Normal</label>
+            <label><input type="radio" name="rain" value="reduced"> Rain: only covered terrace tables</label>
+            <label><input type="radio" name="rain" value="closed"> Rain: terrace closed</label>
+          </div>
+          <div class="rain-result" data-rain-result aria-live="polite"></div>
+        </div>
+        <div class="mini-form">
+          <h3>Walk-in seats</h3>
+          <p data-hold-text></p>
+          <button class="btn btn-small btn-ghost" type="button" data-release>Release now</button>
+        </div>
+        <form class="mini-form" data-block-form>
+          <h3>Block table / Close zone</h3>
+          <div class="inline-fields">
+            <label>Table <select name="table" data-table-select-block></select></label>
+            <button class="btn btn-small btn-ghost" type="submit" data-block-toggle>Block table</button>
+          </div>
+          <div class="inline-fields" data-zone-buttons></div>
+        </form>
+        <form class="mini-form" data-phone-booking>
+          <h3>Booking by phone</h3>
+          <div class="inline-fields">
+            <label>People <input name="party" type="number" min="1" max="40" value="2" required></label>
+            <label>Time <select name="slot" data-slot-select></select></label>
+            <label>Zone <select name="zone" data-zone-select></select></label>
+            <label>Name <input name="name" required maxlength="80"></label>
+            <label>Email <input name="email" type="email" required></label>
+            <label>Phone <input name="phone" type="tel" required></label>
+          </div>
+          <div class="check"><input id="pb-override" name="override" type="checkbox"><label for="pb-override">Override the public rules (reason required, logged)</label></div>
+          <button class="btn btn-small" type="submit">Add</button>
+        </form>
+        <div class="mini-form">
+          <h3>Demo</h3>
+          <p class="muted">Fills the selected day with clearly labelled demo bookings to show how the system works.</p>
+          <button class="btn btn-small" type="button" data-load-demo>Load demo day</button>
+          <button class="btn btn-small btn-ghost" type="button" data-reset-demo>Reset all demo data</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel timeline-panel" aria-labelledby="timeline-title">
+      <h2 id="timeline-title">Timeline</h2>
+      <p class="muted">Drag a booking onto another table, or open it and use “Move”. Moves that break a rule ask for a reason.</p>
+      <div class="legend" data-legend></div>
+      <div class="timeline" data-timeline></div>
+    </section>
+
+    <div class="panel-row">
+      <section class="panel" aria-labelledby="wait-title"><h2 id="wait-title">Waitlist</h2><div data-waitlist></div></section>
+      <section class="panel" aria-labelledby="ns-title"><h2 id="ns-title">No-shows and late cancellations</h2><div data-noshows></div></section>
+    </div>
+    <section class="panel" aria-labelledby="outbox-title"><h2 id="outbox-title">Outbox (demo emails)</h2><div data-outbox></div></section>
+    <section class="panel owner-only" aria-labelledby="audit-title" data-owner-panel>
+      <h2 id="audit-title">Audit log <span class="badge">Owner</span></h2>
+      <div class="owner-actions">
+        <button class="btn btn-small btn-ghost" type="button" data-export>Export CSV</button>
+        <button class="btn btn-small btn-ghost" type="button" data-purge>Run data clean-up now</button>
+        <form class="inline-fields" data-delete-guest>
+          <label>Delete a guest&#39;s data – email <input name="email" type="email" required></label>
+          <button class="btn btn-small btn-danger" type="submit">Delete data</button>
+        </form>
+      </div>
+      <div data-audit></div>
+    </section>
+  </div>
+
+  <aside class="drawer" data-drawer hidden aria-labelledby="drawer-title" tabindex="-1">
+    <div class="drawer-head"><h2 id="drawer-title">Booking</h2><button class="link-btn" type="button" data-drawer-close>Close</button></div>
+    <div data-drawer-body></div>
+  </aside>
+
+  <dialog class="reason-dialog" data-reason-dialog aria-labelledby="reason-title">
+    <form method="dialog" data-reason-form>
+      <h2 id="reason-title">Reason</h2>
+      <p class="muted" data-reason-context></p>
+      <p class="muted">Manual actions and overrides are logged with your name, the time and this reason.</p>
+      <label class="sr-only" for="reason-text">Reason</label>
+      <textarea id="reason-text" name="reason" rows="3" maxlength="300" required></textarea>
+      <div class="step-actions">
+        <button class="btn btn-ghost" type="button" value="cancel" data-reason-cancel>Cancel</button>
+        <button class="btn" type="submit" value="ok">Save</button>
+      </div>
+    </form>
+  </dialog>
+</main>
+
+</body>
+</html>

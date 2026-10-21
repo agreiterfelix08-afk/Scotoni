@@ -1,0 +1,33 @@
+<svg class="landscape" viewBox="0 0 1200 520" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="var(--sky-top)"/>
+      <stop offset="1" stop-color="var(--sky-bottom)"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="520" fill="url(#sky)"/>
+  <circle class="celestial" cx="930" cy="110" r="38" fill="var(--celestial)"/>
+  <g class="stars" fill="var(--star)">
+    <circle cx="120" cy="60" r="1.6"/><circle cx="260" cy="120" r="1.2"/><circle cx="420" cy="50" r="1.5"/>
+    <circle cx="610" cy="90" r="1.1"/><circle cx="760" cy="40" r="1.4"/><circle cx="1080" cy="70" r="1.3"/>
+    <circle cx="1010" cy="170" r="1"/><circle cx="330" cy="200" r="1"/>
+  </g>
+  <!-- distant dolomite walls -->
+  <path d="M0 330 L90 250 L140 280 L210 170 L250 205 L300 140 L350 230 L420 200 L470 260 L540 150 L585 185 L640 120 L700 235 L760 205 L820 260 L890 160 L940 210 L1010 140 L1060 230 L1130 190 L1200 250 L1200 520 L0 520Z" fill="var(--rock-far)"/>
+  <path d="M540 150 L585 185 L560 200 L520 175Z M640 120 L670 175 L640 160 L612 170Z M890 160 L920 195 L885 185 L862 196Z M300 140 L325 185 L298 172 L280 180Z" fill="var(--snow)" opacity=".75"/>
+  <!-- pasture -->
+  <path d="M0 400 C180 350 330 380 480 360 C640 338 760 380 920 355 C1040 336 1120 350 1200 340 L1200 520 L0 520Z" fill="var(--meadow-far)"/>
+  <path d="M0 450 C220 410 420 440 640 420 C850 400 1010 430 1200 410 L1200 520 L0 520Z" fill="var(--meadow)"/>
+  <!-- larches -->
+  <g fill="var(--forest)">
+    <path d="M90 445 l18-58 18 58z"/><path d="M120 450 l14-44 14 44z"/><path d="M1040 425 l16-52 16 52z"/><path d="M1070 430 l13-40 13 40z"/><path d="M1100 428 l17-55 17 55z"/>
+  </g>
+  <!-- the hut -->
+  <g transform="translate(700 372)">
+    <rect x="0" y="22" width="84" height="40" fill="var(--hut-wall)"/>
+    <path d="M-10 26 L42 -6 L94 26Z" fill="var(--hut-roof)"/>
+    <rect x="14" y="34" width="12" height="12" fill="var(--hut-window)"/><rect x="58" y="34" width="12" height="12" fill="var(--hut-window)"/>
+    <rect x="36" y="40" width="12" height="22" fill="var(--hut-roof)"/>
+    <path class="smoke" d="M70 2 c-6 -10 6 -16 0 -26 c-6 -10 6 -16 0 -26" stroke="var(--smoke)" stroke-width="4" fill="none" stroke-linecap="round"/>
+  </g>
+</svg>

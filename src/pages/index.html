@@ -1,0 +1,224 @@
+<!--page {"key": "index", "modules": ["status", "menu", "trail", "family", "rooms", "gallery"], "jsonld": true} -->
+{{>header}}
+<main id="main">
+  <section class="hero" aria-labelledby="hero-title">
+    {{>landscape}}
+    <div class="hero-inner container">
+      <p class="eyebrow">{{hero.eyebrow}}</p>
+      <h1 id="hero-title">{{hero.title}}</h1>
+      <p class="lead">{{hero.lead}}</p>
+      <div class="hero-actions">
+        <!--if:onlineBooking--><a class="btn" href="reserve.html">{{hero.cta_book}}</a><!--/if:onlineBooking-->
+        <a class="btn btn-ghost btn-on-dark" href="#getting-here">{{hero.cta_route}}</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="status-strip" data-module="status">
+    <div class="container status-inner">
+      <span class="status-dot" data-status-dot aria-hidden="true"></span>
+      <p data-status-text>{{status.noscript}}</p>
+    </div>
+  </div>
+
+  <section class="facts-band" aria-label="{{facts.label}}">
+    <ul class="container facts">
+      <li><strong>{{facts.altitude}}</strong><span>{{facts.altitude_label}}</span><!--if:altitudeUnverified--><small class="todo-note">{{facts.altitude_note}}</small><!--/if:altitudeUnverified--></li>
+      <li><strong>{{facts.family}}</strong><span>{{facts.family_label}}</span></li>
+      <li><strong>{{facts.wines}}</strong><span>{{facts.wines_label}}</span></li>
+      <li><strong>{{facts.beds}}</strong><span>{{facts.beds_label}}</span></li>
+    </ul>
+  </section>
+
+  <section id="story" class="section" aria-labelledby="story-title">
+    <div class="container two-col">
+      <div>
+        <h2 id="story-title">{{story.title}}</h2>
+        <p>{{story.p1}}</p>
+        <p>{{story.p2}}</p>
+      </div>
+      <div>
+        <p>{{story.p3}}</p>
+        <p>{{story.p4}}</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="food" class="section section-alt" aria-labelledby="food-title" data-module="menu">
+    <div class="container">
+      <h2 id="food-title">{{food.title}}</h2>
+      <p class="section-lead">{{food.intro}}</p>
+      {{$menuFilters}}
+      <p class="sr-only" data-menu-count aria-live="polite"></p>
+      <ul class="menu-list" data-menu-list>
+        {{$menuItems}}
+      </ul>
+      <p class="menu-empty" data-menu-empty hidden>{{food.none}}</p>
+      <p class="note" data-gluten-note>{{food.gluten_note}}</p>
+      <p class="note">{{food.allergen_note}}</p>
+      <!--if:wineList-->
+      <a class="teaser-card" href="wine.html">
+        <span class="teaser-icon" aria-hidden="true">🍷</span>
+        <span><strong>{{wine.teaser_title}}</strong><span>{{wine.teaser_text}}</span></span>
+        <span class="teaser-cta">{{wine.teaser_cta}} →</span>
+      </a>
+      <!--/if:wineList-->
+    </div>
+  </section>
+
+  <section id="getting-here" class="section" aria-labelledby="trail-title" data-module="trail">
+    <div class="container">
+      <h2 id="trail-title">{{trail.title}}</h2>
+      <p class="section-lead">{{trail.lead}}</p>
+      <article class="trail-card">
+        <div class="trail-head">
+          <span class="badge badge-easy"><span class="sr-only">{{trail.difficulty_label}}: </span>{{trail.difficulty}}</span>
+          <dl class="trail-stats">
+            <div><dt>{{trail.start_label}}</dt><dd>{{trail.start_value}}</dd></div>
+            <div><dt>{{trail.time_label}}</dt><dd>{{trail.time_value}}</dd></div>
+            <div><dt>{{trail.ascent_label}}</dt><dd>{{trail.ascent_value}}</dd></div>
+            <div><dt>{{trail.trail_label}}</dt><dd>{{trail.trail_value}}</dd></div>
+          </dl>
+        </div>
+        <p>{{trail.desc}}</p>
+        <figure class="profile">
+          {{$trailProfile}}
+          <figcaption>{{trail.profile_desc}}</figcaption>
+        </figure>
+        <label class="switch">
+          <input type="checkbox" data-trail-extension>
+          <span>{{trail.extension_toggle}}</span>
+        </label>
+        <p class="trail-extension" data-trail-extension-text hidden>{{trail.extension}}</p>
+        <p class="note">{{trail.parking}}</p>
+        <p class="note">{{trail.weather_note}}</p>
+        <div class="trail-actions">
+          <a class="btn btn-small" href="{{$mapsHut}}" rel="noopener" target="_blank">{{trail.maps_hut}}</a>
+          <a class="btn btn-small btn-ghost" href="{{$mapsStart}}" rel="noopener" target="_blank">{{trail.maps_start}}</a>
+        </div>
+        <form class="calendar-form" data-trail-calendar>
+          <fieldset>
+            <legend>{{trail.calendar_title}}</legend>
+            <div class="inline-fields">
+              <label>{{trail.calendar_date}} <input type="date" name="date" required></label>
+              <label>{{trail.calendar_time}} <input type="time" name="time" value="10:00" required></label>
+              <button class="btn btn-small btn-ghost" type="submit">{{trail.calendar_add}}</button>
+            </div>
+          </fieldset>
+        </form>
+        <p class="note offline-note" data-offline-note hidden>{{trail.offline}}</p>
+      </article>
+    </div>
+  </section>
+
+  <!--if:familyCorner-->
+  <section id="family" class="section section-alt" aria-labelledby="family-title" data-module="family">
+    <div class="container">
+      <h2 id="family-title">{{family.title}}</h2>
+      <p class="section-lead">{{family.lead}}</p>
+      <div class="family-grid">
+        <article class="card">
+          <h3>{{family.playground}}</h3>
+          <p>{{family.playground_text}}</p>
+        </article>
+        <article class="card">
+          <h3>{{family.alpacas}}</h3>
+          <p>{{family.alpacas_text}}</p>
+          <p class="note">{{family.rules_note}}</p>
+        </article>
+      </div>
+      <ul class="alpaca-cards">
+        {{$alpacaCards}}
+      </ul>
+    </div>
+  </section>
+  <!--/if:familyCorner-->
+
+  <!--if:rooms-->
+  <section id="rooms" class="section" aria-labelledby="rooms-title" data-module="rooms">
+    <div class="container">
+      <h2 id="rooms-title">{{rooms.title}}</h2>
+      <p class="section-lead">{{rooms.lead}}</p>
+      <div class="cards cards-2">
+        <article class="card room-card">
+          <h3>{{rooms.private}}</h3>
+          <ul class="ticks"><li>{{rooms.sleeps}}</li><li>{{rooms.wood}}</li><li>{{rooms.board}}</li></ul>
+        </article>
+        <article class="card room-card">
+          <h3>{{rooms.shared}}</h3>
+          <ul class="ticks"><li>{{rooms.sleeps}}</li><li>{{rooms.wood}}</li><li>{{rooms.board}}</li></ul>
+        </article>
+      </div>
+      <p class="note">{{rooms.prices_note}}</p>
+
+      <form class="form" data-rooms-form novalidate>
+        <h3>{{rooms.form_title}}</h3>
+        <p class="muted">{{rooms.form_intro}}</p>
+        <div class="error-summary" data-error-summary tabindex="-1" hidden></div>
+        <div class="grid">
+          <div class="field"><label for="r-arrival">{{rooms.arrival}}</label><input id="r-arrival" name="arrival" type="date" required aria-describedby="r-arrival-err"><p class="field-error" id="r-arrival-err"></p></div>
+          <div class="field"><label for="r-departure">{{rooms.departure}}</label><input id="r-departure" name="departure" type="date" required aria-describedby="r-departure-err"><p class="field-error" id="r-departure-err"></p></div>
+          <div class="field"><label for="r-guests">{{rooms.guests}}</label><input id="r-guests" name="guests" type="number" min="1" max="20" value="2" required aria-describedby="r-guests-err"><p class="field-error" id="r-guests-err"></p></div>
+          <div class="field"><label for="r-room">{{rooms.room_type}}</label>
+            <select id="r-room" name="room"><option value="any">{{rooms.any}}</option><option value="private">{{rooms.private}}</option><option value="shared">{{rooms.shared}}</option></select></div>
+          <div class="field"><label for="r-board">{{rooms.board_label}}</label>
+            <select id="r-board" name="board"><option value="halfboard">{{rooms.halfboard}}</option><option value="breakfast">{{rooms.breakfast}}</option></select></div>
+          <div class="field"><label for="r-name">{{form.name}}</label><input id="r-name" name="name" autocomplete="name" required maxlength="80" aria-describedby="r-name-err"><p class="field-error" id="r-name-err"></p></div>
+          <div class="field"><label for="r-email">{{form.email}}</label><input id="r-email" name="email" type="email" autocomplete="email" required aria-describedby="r-email-err"><p class="field-error" id="r-email-err"></p></div>
+          <div class="field span-2"><label for="r-message">{{rooms.message}}</label><textarea id="r-message" name="message" rows="3" maxlength="1000"></textarea></div>
+        </div>
+        <div class="hp" aria-hidden="true"><label>{{form.honeypot}} <input name="website" tabindex="-1" autocomplete="off"></label></div>
+        <div class="field check"><input id="r-consent" name="consent" type="checkbox" required aria-describedby="r-consent-err"><label for="r-consent">{{form.consent}} <a href="privacy.html">{{form.privacy_link}}</a></label><p class="field-error" id="r-consent-err"></p></div>
+        <button class="btn" type="submit">{{rooms.send}}</button>
+        <p class="form-result" data-form-result role="status"></p>
+      </form>
+    </div>
+  </section>
+  <!--/if:rooms-->
+
+  <!--if:gallery-->
+  <section id="gallery" class="section section-alt" aria-labelledby="gallery-title" data-module="gallery">
+    <div class="container">
+      <h2 id="gallery-title">{{gallery.title}}</h2>
+      <!--if:galleryPlaceholders--><p class="note">{{gallery.placeholder_note}}</p><!--/if:galleryPlaceholders-->
+      <ul class="gallery-grid">
+        {{$galleryGrid}}
+      </ul>
+    </div>
+    <dialog class="lightbox" data-lightbox aria-label="{{gallery.title}}">
+      <div class="lightbox-inner">
+        <button class="lightbox-close" type="button" data-lightbox-close aria-label="{{gallery.close}}">×</button>
+        <figure data-lightbox-figure></figure>
+        <div class="lightbox-nav">
+          <button type="button" data-lightbox-prev aria-label="{{gallery.prev}}">‹</button>
+          <span data-lightbox-counter aria-live="polite"></span>
+          <button type="button" data-lightbox-next aria-label="{{gallery.next}}">›</button>
+        </div>
+      </div>
+    </dialog>
+  </section>
+  <!--/if:gallery-->
+
+  {{$egaTeaser}}
+
+  <section id="contact" class="section" aria-labelledby="contact-title">
+    <div class="container two-col">
+      <div>
+        <h2 id="contact-title">{{contact.title}}</h2>
+        <dl class="contact-list">
+          <div><dt>{{contact.address}}</dt><dd>{{$address}}</dd></div>
+          <div><dt>{{contact.email}}</dt><dd><a href="mailto:{{$email}}">{{$email}}</a></dd></div>
+          <!--if:hasPhone--><div><dt>{{contact.phone}}</dt><dd><a href="tel:{{$phoneHref}}">{{$phone}}</a></dd></div><!--/if:hasPhone-->
+        </dl>
+        <p><a href="{{$mapsHut}}" rel="noopener" target="_blank">{{contact.maps}}</a></p>
+      </div>
+      <!--if:hasReviews-->
+      <div>
+        <h2>{{reviews.title}}</h2>
+        <p><a class="btn btn-ghost" href="{{$reviewsUrl}}" rel="noopener" target="_blank">{{reviews.link}}</a></p>
+      </div>
+      <!--/if:hasReviews-->
+    </div>
+  </section>
+</main>
+{{>footer}}

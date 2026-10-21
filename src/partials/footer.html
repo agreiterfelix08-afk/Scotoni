@@ -1,0 +1,22 @@
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <p class="footer-brand">Rifugio Scotoni</p>
+      <address>
+        {{$address}}<br>
+        <a href="mailto:{{$email}}">{{$email}}</a>
+        <!--if:hasPhone--><br><a href="tel:{{$phoneHref}}">{{$phone}}</a><!--/if:hasPhone-->
+      </address>
+    </div>
+    <ul class="footer-links">
+      <li><a href="privacy.html">{{footer.privacy}}</a></li>
+      <!--if:wineList--><li><a href="wine.html">{{nav.wine}}</a></li><!--/if:wineList-->
+      <!--if:egaScotoni--><li><a href="ega-scotoni.html">{{ega.nav}}</a></li><!--/if:egaScotoni-->
+      <li><a href="admin.html" rel="nofollow">{{footer.staff}}</a></li>
+    </ul>
+  </div>
+  <div class="container footer-meta">
+    <p>{{footer.rights}}</p>
+    <p class="muted">{{footer.prototype}}</p>
+  </div>
+</footer>

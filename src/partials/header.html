@@ -1,0 +1,31 @@
+<a class="skip-link" href="#main">{{a11y.skip}}</a>
+<div class="alert-banner" id="alert-banner" role="status" data-dismiss="{{alert.dismiss}}" data-label-weather="{{alert.weather}}" data-label-kitchen="{{alert.kitchen}}" data-label-info="{{alert.info}}" hidden></div>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M2 27 12 9l5 8 4-6 9 16z" fill="currentColor"/><path d="M12 9l2.6 4.7-2.6-1.4-2.4 1.6z" fill="var(--snow)"/></svg>
+      <span>Rifugio <strong>Scotoni</strong></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-bars" aria-hidden="true"></span>{{nav.menu_button}}
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="{{nav.label}}">
+      <ul class="nav-links">
+        <li><a href="index.html#food">{{nav.food}}</a></li>
+        <!--if:wineList--><li><a href="wine.html">{{nav.wine}}</a></li><!--/if:wineList-->
+        <li><a href="index.html#getting-here">{{nav.getting_here}}</a></li>
+        <!--if:rooms--><li><a href="index.html#rooms">{{nav.rooms}}</a></li><!--/if:rooms-->
+        <!--if:familyCorner--><li><a href="index.html#family">{{nav.family}}</a></li><!--/if:familyCorner-->
+        <!--if:egaScotoni--><li><a href="ega-scotoni.html">{{ega.nav}}</a></li><!--/if:egaScotoni-->
+      </ul>
+      <div class="header-tools">
+        {{$langSwitcher}}
+        <button class="theme-toggle" type="button" data-theme-toggle data-label-auto="{{theme.auto}}" data-label-day="{{theme.day}}" data-label-night="{{theme.night}}">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z" fill="currentColor"/></svg>
+          <span class="sr-only">{{theme.toggle}}: </span><span data-theme-label>{{theme.auto}}</span>
+        </button>
+      </div>
+      <!--if:onlineBooking--><a class="btn btn-small nav-cta" href="reserve.html">{{nav.book}}</a><!--/if:onlineBooking-->
+    </nav>
+  </div>
+</header>
