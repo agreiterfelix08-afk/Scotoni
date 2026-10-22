@@ -4,7 +4,7 @@
 //  1. Run the same engine on a small Node server (e.g. Fastify/Express) with this
 //     store implemented on SQLite (better-sqlite3) or Postgres.
 //  2. Expose the engine methods as JSON endpoints (see docs/TECHNICAL.md → "Backend").
-//  3. In src/js/store-setup.js replace `new LocalStorageStore()` with `new HttpEngineClient(url)`
+//  3. In src/js/engine-setup.js replace the `engine` export with `createRemoteEngine(url)`
 //     (the browser then calls the server instead of running the engine locally).
 //
 // Concurrency: transaction() maps to `BEGIN IMMEDIATE … COMMIT`, which serialises
