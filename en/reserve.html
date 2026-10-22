@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Book a table – Rifugio Scotoni</title>
+  <meta name="description" content="Book a lunch table at Rifugio Scotoni, Alta Badia. Same transparent rules for everyone.">
+  <link rel="canonical" href="https://agreiterfelix08-afk.github.io/Scotoni/en/reserve.html">
+  <link rel="alternate" hreflang="it" href="https://agreiterfelix08-afk.github.io/Scotoni/it/reserve.html">
+  <link rel="alternate" hreflang="de" href="https://agreiterfelix08-afk.github.io/Scotoni/de/reserve.html">
+  <link rel="alternate" hreflang="en" href="https://agreiterfelix08-afk.github.io/Scotoni/en/reserve.html">
+  <link rel="alternate" hreflang="x-default" href="https://agreiterfelix08-afk.github.io/Scotoni/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Rifugio Scotoni">
+  <meta property="og:title" content="Book a table – Rifugio Scotoni">
+  <meta property="og:description" content="Book a lunch table at Rifugio Scotoni, Alta Badia. Same transparent rules for everyone.">
+  <meta property="og:url" content="https://agreiterfelix08-afk.github.io/Scotoni/en/reserve.html">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:locale:alternate" content="it_IT">
+  <meta property="og:locale:alternate" content="de_DE">
+  <meta name="twitter:card" content="summary">
+  <meta name="theme-color" content="#f6f1e7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#151a2b" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+  <script>try{var t=localStorage.getItem("scotoni-theme");if(t==="day"||t==="night")document.documentElement.dataset.theme=t==="day"?"light":"dark"}catch(e){}</script>
+  <link rel="stylesheet" href="../src/styles/main.css">
+  <script type="module" src="../src/js/site.js"></script>
+  
+</head>
+<body data-page="reserve">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="alert-banner" id="alert-banner" role="status" data-dismiss="Dismiss" data-label-weather="Weather alert" data-label-kitchen="Kitchen notice" data-label-info="Notice" hidden></div>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M2 27 12 9l5 8 4-6 9 16z" fill="currentColor"/><path d="M12 9l2.6 4.7-2.6-1.4-2.4 1.6z" fill="var(--snow)"/></svg>
+      <span>Rifugio <strong>Scotoni</strong></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-bars" aria-hidden="true"></span>Menu
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="Main">
+      <ul class="nav-links">
+        <li><a href="index.html#food">Food</a></li>
+        <li><a href="wine.html">Wine list</a></li>
+        <li><a href="index.html#getting-here">Getting here</a></li>
+        <li><a href="index.html#rooms">Rooms</a></li>
+        <li><a href="index.html#family">Families</a></li>
+        <li><a href="ega-scotoni.html">Ega Scotoni</a></li>
+      </ul>
+      <div class="header-tools">
+        <ul class="lang-switch" aria-label="Language"><li><a href="../it/reserve.html" hreflang="it" lang="it" data-set-lang="it" aria-label="Italiano">IT</a></li><li><a href="../de/reserve.html" hreflang="de" lang="de" data-set-lang="de" aria-label="Deutsch">DE</a></li><li><a href="../en/reserve.html" hreflang="en" lang="en" data-set-lang="en" aria-label="English" aria-current="true">EN</a></li></ul>
+        <button class="theme-toggle" type="button" data-theme-toggle data-label-auto="Auto" data-label-day="Day" data-label-night="Night">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z" fill="currentColor"/></svg>
+          <span class="sr-only">Switch between day and night theme: </span><span data-theme-label>Auto</span>
+        </button>
+      </div>
+      <a class="btn btn-small nav-cta" href="reserve.html">Book a table</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="section reserve-page">
+  <div class="container narrow">
+    <h1>Book a table</h1>
+    <p class="section-lead">Lunch reservations. The same rules for everyone: tables go in the order of booking.</p>
+    <p class="note demo-note">Prototype: bookings are saved only in this browser and no real email is sent. In the demo, emails appear in the staff dashboard.</p>
+    <div class="status-strip status-inline" data-module="status">
+      <span class="status-dot" data-status-dot aria-hidden="true"></span>
+      <p data-status-text>Opening times: please check with us before you go.</p>
+    </div>
+    <noscript><p class="note">Online booking needs JavaScript. Please write to info@scotoni.it.</p><style>.booking { display: none; }</style></noscript>
+
+    <div class="booking" data-module="reserve">
+      <ol class="steps" aria-label="Booking steps">
+        <li data-step-indicator="1"><span>1</span> When and how many</li>
+        <li data-step-indicator="2"><span>2</span> Time and place</li>
+        <li data-step-indicator="3"><span>3</span> Your details</li>
+      </ol>
+      <p class="sr-only" data-step-announce aria-live="polite"></p>
+
+      <!-- Step 1 -->
+      <form class="form step" data-step="1" novalidate>
+        <h2 tabindex="-1">When and how many</h2>
+        <div class="error-summary" data-error-summary tabindex="-1" hidden></div>
+        <div class="grid">
+          <div class="field">
+            <label for="b-date">Date</label>
+            <input id="b-date" name="date" type="date" required aria-describedby="b-date-err">
+            <p class="field-error" id="b-date-err"></p>
+          </div>
+          <div class="field">
+            <label for="b-party">Number of people</label>
+            <div class="stepper">
+              <button type="button" data-stepper="-1" aria-label="One person fewer" aria-controls="b-party">−</button>
+              <input id="b-party" name="party" type="number" inputmode="numeric" min="1" value="2" required aria-describedby="b-party-err">
+              <button type="button" data-stepper="1" aria-label="One person more" aria-controls="b-party">+</button>
+            </div>
+            <p class="field-error" id="b-party-err"></p>
+          </div>
+          <div class="field">
+            <label for="b-children">of which children</label>
+            <input id="b-children" name="children" type="number" inputmode="numeric" min="0" value="0" aria-describedby="b-children-err">
+            <p class="field-error" id="b-children-err"></p>
+          </div>
+          <div class="field checks">
+            <div class="check"><input id="b-dog" name="dog" type="checkbox"><label for="b-dog">We are bringing a dog</label></div>
+            <div class="check"><input id="b-gf" name="glutenFree" type="checkbox"><label for="b-gf">Someone needs gluten-free food</label></div>
+          </div>
+        </div>
+        <button class="btn" type="submit">Show available times</button>
+      </form>
+
+      <!-- Step 2 -->
+      <form class="form step" data-step="2" novalidate hidden>
+        <h2 tabindex="-1">Time and place</h2>
+        <p class="step-summary" data-summary-1></p>
+        <div class="error-summary" data-error-summary tabindex="-1" hidden></div>
+        <p class="note" data-group-note hidden></p>
+        <p class="note" data-rain-note hidden>The terrace is closed or reduced today because of the weather.</p>
+        <fieldset class="slots">
+          <legend>Time</legend>
+          <div class="slot-grid" data-slots></div>
+        </fieldset>
+        <fieldset class="zones" data-zones hidden>
+          <legend>Where would you like to sit?</legend>
+          <div class="zone-options" data-zone-options></div>
+        </fieldset>
+        <div class="premium-box" data-premium-box hidden>
+          <p data-premium-rule></p>
+          <p class="muted">Anyone can book the reserved area under the same visible rule – there are no favourites.</p>
+        </div>
+        <div class="waitlist-box" data-waitlist-box hidden>
+          <p>This time is full. Join the waitlist: if a table frees up, we email you a link to confirm it.</p>
+        </div>
+        <div class="step-actions">
+          <button class="btn btn-ghost" type="button" data-back>Back</button>
+          <button class="btn" type="submit" data-step2-submit>Continue</button>
+        </div>
+      </form>
+
+      <!-- Step 3 -->
+      <form class="form step" data-step="3" novalidate hidden>
+        <h2 tabindex="-1">Your details</h2>
+        <p class="step-summary" data-summary-2></p>
+        <div class="error-summary" data-error-summary tabindex="-1" hidden></div>
+        <div class="grid">
+          <div class="field"><label for="b-name">Name</label><input id="b-name" name="name" autocomplete="name" required maxlength="80" aria-describedby="b-name-err"><p class="field-error" id="b-name-err"></p></div>
+          <div class="field"><label for="b-email">Email</label><input id="b-email" name="email" type="email" autocomplete="email" required aria-describedby="b-email-err"><p class="field-error" id="b-email-err"></p></div>
+          <div class="field"><label for="b-phone">Phone</label><input id="b-phone" name="phone" type="tel" autocomplete="tel" required aria-describedby="b-phone-err"><p class="field-error" id="b-phone-err"></p></div>
+          <div class="field span-2"><label for="b-notes">Notes (allergies, high chair …)</label><textarea id="b-notes" name="notes" rows="2" maxlength="500" aria-describedby="b-notes-err"></textarea><p class="field-error" id="b-notes-err"></p></div>
+        </div>
+        <div class="hp" aria-hidden="true"><label>Leave this field empty <input name="website" tabindex="-1" autocomplete="off"></label></div>
+        <details class="rules" open>
+          <summary>Booking rules – the same for everyone</summary>
+          <ul data-rules-list></ul>
+        </details>
+        <div class="field check"><input id="b-policy" name="acceptPolicy" type="checkbox" required aria-describedby="b-policy-err"><label for="b-policy">I have read the booking rules.</label><p class="field-error" id="b-policy-err"></p></div>
+        <div class="field check" data-premium-accept hidden><input id="b-premium" name="acceptPremiumRule" type="checkbox" aria-describedby="b-premium-err"><label for="b-premium">I accept the rule of the reserved area.</label><p class="field-error" id="b-premium-err"></p></div>
+        <div class="step-actions">
+          <button class="btn btn-ghost" type="button" data-back>Back</button>
+          <button class="btn" type="submit" data-submit>Confirm booking</button>
+        </div>
+      </form>
+
+      <!-- Result / manage / offer views are rendered here -->
+      <section class="result" data-result tabindex="-1" hidden aria-live="polite"></section>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <p class="footer-brand">Rifugio Scotoni</p>
+      <address>
+        Alpe Lagazuoi 2, San Cassiano, Alta Badia, South Tyrol<br>
+        <a href="mailto:info@scotoni.it">info@scotoni.it</a>
+        
+      </address>
+    </div>
+    <ul class="footer-links">
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="wine.html">Wine list</a></li>
+      <li><a href="ega-scotoni.html">Ega Scotoni</a></li>
+      <li><a href="admin.html" rel="nofollow">Staff</a></li>
+    </ul>
+  </div>
+  <div class="container footer-meta">
+    <p>© 2026 Rifugio Scotoni · Agreiter family</p>
+    <p class="muted">Website prototype – some details are still to be confirmed by the hut.</p>
+  </div>
+</footer>
+
+
+</body>
+</html>

@@ -1,151 +1,33 @@
 <!doctype html>
-<html lang="en">
+<html lang="it">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Scotoni — Reservations</title>
-  <meta name="description" content="Reserve a table at Scotoni, a mountain hut restaurant in the Dolomites.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <title>Rifugio Scotoni</title>
+  <meta name="description" content="Rifugio a conduzione familiare sotto il Lagazuoi in Alta Badia: griglia a vista, Kaiserschmarrn, circa 700 vini e camere semplici. Prenota il tuo tavolo online.">
+  <link rel="canonical" href="https://agreiterfelix08-afk.github.io/Scotoni/it/">
+  <link rel="alternate" hreflang="it" href="https://agreiterfelix08-afk.github.io/Scotoni/it/">
+  <link rel="alternate" hreflang="de" href="https://agreiterfelix08-afk.github.io/Scotoni/de/">
+  <link rel="alternate" hreflang="en" href="https://agreiterfelix08-afk.github.io/Scotoni/en/">
+  <link rel="alternate" hreflang="x-default" href="https://agreiterfelix08-afk.github.io/Scotoni/">
+  <script>
+    (function () {
+      var langs = ["it","de","en"], pick = null;
+      try { pick = localStorage.getItem("scotoni-lang"); } catch (e) {}
+      if (langs.indexOf(pick) < 0) {
+        pick = null;
+        var prefs = navigator.languages || [navigator.language || ""];
+        for (var i = 0; i < prefs.length && !pick; i++) {
+          var code = String(prefs[i]).slice(0, 2).toLowerCase();
+          if (langs.indexOf(code) >= 0) pick = code;
+        }
+      }
+      location.replace((pick || "it") + "/" + location.search + location.hash);
+    })();
+  </script>
+  <noscript><meta http-equiv="refresh" content="0; url=it/"></noscript>
 </head>
 <body>
-  <header class="site-header">
-    <a class="brand" href="#top">Scotoni</a>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#menu">Menu</a>
-      <a href="#hours">Hours</a>
-      <a class="btn btn-small" href="#reserve">Book a table</a>
-    </nav>
-  </header>
-
-  <main id="top">
-    <section class="hero">
-      <div class="hero-inner">
-        <p class="eyebrow">Mountain hut · Dolomites</p>
-        <h1>Grilled over fire,<br>served above the clouds.</h1>
-        <p class="lead">Reserve your table on our sun terrace or in the wooden stube and enjoy hearty mountain cooking with a view of the peaks.</p>
-        <a class="btn" href="#reserve">Reserve now</a>
-      </div>
-    </section>
-
-    <section id="about" class="section">
-      <div class="container two-col">
-        <div>
-          <h2>A hut with a history</h2>
-          <p>Scotoni sits high in the Dolomites, reachable on foot, by bike in summer and on skis in winter. For generations the family has welcomed hikers and skiers with generous plates of grilled meat, homemade pasta and Tyrolean desserts.</p>
-          <p>Seating is limited, especially at peak lunch hours — booking ahead guarantees your spot.</p>
-        </div>
-        <ul class="facts">
-          <li><strong>2,040 m</strong><span>altitude</span></li>
-          <li><strong>Lunch</strong><span>service daily in season</span></li>
-          <li><strong>Terrace</strong><span>&amp; indoor stube</span></li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="menu" class="section alt">
-      <div class="container">
-        <h2>From the grill and the kitchen</h2>
-        <div class="cards">
-          <article class="card">
-            <h3>Mixed grill</h3>
-            <p>Ribs, sausages, pork and beef straight from the open fire, with polenta and grilled vegetables.</p>
-          </article>
-          <article class="card">
-            <h3>Homemade pasta</h3>
-            <p>Spinach canederli, schlutzkrapfen and tagliatelle with venison ragù.</p>
-          </article>
-          <article class="card">
-            <h3>Desserts</h3>
-            <p>Apple strudel, kaiserschmarrn with cranberry jam and warm krapfen.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="hours" class="section">
-      <div class="container two-col">
-        <div>
-          <h2>Opening hours</h2>
-          <table class="hours">
-            <tr><th>Summer season</th><td>June – October</td></tr>
-            <tr><th>Winter season</th><td>December – April</td></tr>
-            <tr><th>Kitchen</th><td>11:30 – 15:30</td></tr>
-            <tr><th>Closed</th><td>Between seasons</td></tr>
-          </table>
-        </div>
-        <div>
-          <h2>Getting here</h2>
-          <p>Walk or ski down from the nearby lifts, or hike up from the valley in about an hour. Ask us about evening dinners for groups.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="reserve" class="section reserve">
-      <div class="container">
-        <h2>Book a table</h2>
-        <p class="muted">Lunch reservations, up to 12 guests online. For larger groups, please contact us directly.</p>
-
-        <form id="reservation-form" class="form" novalidate>
-          <div class="grid">
-            <label>Date
-              <input type="date" name="date" required>
-            </label>
-            <label>Time
-              <select name="time" required>
-                <option value="">Choose a time</option>
-              </select>
-            </label>
-            <label>Guests
-              <input type="number" name="guests" min="1" max="12" value="2" required>
-            </label>
-            <label>Seating
-              <select name="seating">
-                <option value="any">No preference</option>
-                <option value="terrace">Sun terrace</option>
-                <option value="stube">Indoor stube</option>
-              </select>
-            </label>
-            <label>Name
-              <input type="text" name="name" autocomplete="name" required>
-            </label>
-            <label>Email
-              <input type="email" name="email" autocomplete="email" required>
-            </label>
-            <label>Phone
-              <input type="tel" name="phone" autocomplete="tel" required>
-            </label>
-            <label class="span-2">Notes <span class="muted">(allergies, high chair, celebrations…)</span>
-              <textarea name="notes" rows="3"></textarea>
-            </label>
-          </div>
-          <p class="availability" id="availability" aria-live="polite"></p>
-          <p class="error" id="form-error" role="alert"></p>
-          <button class="btn" type="submit">Confirm reservation</button>
-        </form>
-
-        <div id="confirmation" class="confirmation" hidden>
-          <h3>See you up there!</h3>
-          <p id="confirmation-text"></p>
-          <button class="btn btn-ghost" type="button" id="new-booking">Make another booking</button>
-        </div>
-
-        <div class="my-bookings">
-          <h3>Your reservations</h3>
-          <ul id="booking-list"></ul>
-          <p class="muted" id="no-bookings">No reservations on this device yet.</p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <p>© <span id="year"></span> Scotoni · Mountain hut restaurant</p>
-  </footer>
-
-  <script src="script.js"></script>
+  <p>Rifugio Scotoni: <a href="it/" hreflang="it" lang="it">Italiano</a> · <a href="de/" hreflang="de" lang="de">Deutsch</a> · <a href="en/" hreflang="en" lang="en">English</a></p>
 </body>
 </html>

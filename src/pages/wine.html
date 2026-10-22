@@ -1,0 +1,29 @@
+<!--page {"key": "wine", "modules": ["wine"], "feature": "wineList"} -->
+{{>header}}
+<main id="main" class="section">
+  <div class="container" data-module="wine">
+    <h1>{{wine.title}}</h1>
+    <p class="section-lead">{{wine.lead}}</p>
+    <p class="note demo-note" data-wine-demo>{{wine.demo_notice}}</p>
+    <form class="filters wine-filters" data-wine-filters role="search">
+      <div class="field grow"><label for="w-q">{{wine.search}}</label><input id="w-q" name="q" type="search" autocomplete="off"></div>
+      <div class="field"><label for="w-region">{{wine.region}}</label><select id="w-region" name="region"><option value="">{{wine.any}}</option></select></div>
+      <div class="field"><label for="w-colour">{{wine.colour}}</label>
+        <select id="w-colour" name="colour">
+          <option value="">{{wine.any}}</option>
+          <option value="red">{{colour.red}}</option><option value="white">{{colour.white}}</option><option value="rose">{{colour.rose}}</option>
+          <option value="sparkling">{{colour.sparkling}}</option><option value="sweet">{{colour.sweet}}</option>
+        </select></div>
+      <div class="field"><label for="w-price">{{wine.price}}</label>
+        <select id="w-price" name="price">
+          <option value="">{{wine.any}}</option><option value="1">{{price.1}}</option><option value="2">{{price.2}}</option><option value="3">{{price.3}}</option><option value="4">{{price.4}}</option>
+        </select></div>
+      <button class="btn btn-small btn-ghost" type="reset">{{wine.reset}}</button>
+    </form>
+    <p class="results-count" data-wine-count aria-live="polite">{{wine.loading}}</p>
+    <ul class="wine-list" data-wine-list></ul>
+    <div data-wine-sentinel aria-hidden="true"></div>
+    <noscript><p>{{wine.noscript}}</p></noscript>
+  </div>
+</main>
+{{>footer}}

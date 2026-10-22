@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wine list – Rifugio Scotoni</title>
+  <meta name="description" content="Search the wine list of Rifugio Scotoni in Alta Badia by region, colour and price.">
+  <link rel="canonical" href="https://agreiterfelix08-afk.github.io/Scotoni/en/wine.html">
+  <link rel="alternate" hreflang="it" href="https://agreiterfelix08-afk.github.io/Scotoni/it/wine.html">
+  <link rel="alternate" hreflang="de" href="https://agreiterfelix08-afk.github.io/Scotoni/de/wine.html">
+  <link rel="alternate" hreflang="en" href="https://agreiterfelix08-afk.github.io/Scotoni/en/wine.html">
+  <link rel="alternate" hreflang="x-default" href="https://agreiterfelix08-afk.github.io/Scotoni/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Rifugio Scotoni">
+  <meta property="og:title" content="Wine list – Rifugio Scotoni">
+  <meta property="og:description" content="Search the wine list of Rifugio Scotoni in Alta Badia by region, colour and price.">
+  <meta property="og:url" content="https://agreiterfelix08-afk.github.io/Scotoni/en/wine.html">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:locale:alternate" content="it_IT">
+  <meta property="og:locale:alternate" content="de_DE">
+  <meta name="twitter:card" content="summary">
+  <meta name="theme-color" content="#f6f1e7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#151a2b" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+  <script>try{var t=localStorage.getItem("scotoni-theme");if(t==="day"||t==="night")document.documentElement.dataset.theme=t==="day"?"light":"dark"}catch(e){}</script>
+  <link rel="stylesheet" href="../src/styles/main.css">
+  <script type="module" src="../src/js/site.js"></script>
+  
+</head>
+<body data-page="wine">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="alert-banner" id="alert-banner" role="status" data-dismiss="Dismiss" data-label-weather="Weather alert" data-label-kitchen="Kitchen notice" data-label-info="Notice" hidden></div>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M2 27 12 9l5 8 4-6 9 16z" fill="currentColor"/><path d="M12 9l2.6 4.7-2.6-1.4-2.4 1.6z" fill="var(--snow)"/></svg>
+      <span>Rifugio <strong>Scotoni</strong></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-bars" aria-hidden="true"></span>Menu
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="Main">
+      <ul class="nav-links">
+        <li><a href="index.html#food">Food</a></li>
+        <li><a href="wine.html">Wine list</a></li>
+        <li><a href="index.html#getting-here">Getting here</a></li>
+        <li><a href="index.html#rooms">Rooms</a></li>
+        <li><a href="index.html#family">Families</a></li>
+        <li><a href="ega-scotoni.html">Ega Scotoni</a></li>
+      </ul>
+      <div class="header-tools">
+        <ul class="lang-switch" aria-label="Language"><li><a href="../it/wine.html" hreflang="it" lang="it" data-set-lang="it" aria-label="Italiano">IT</a></li><li><a href="../de/wine.html" hreflang="de" lang="de" data-set-lang="de" aria-label="Deutsch">DE</a></li><li><a href="../en/wine.html" hreflang="en" lang="en" data-set-lang="en" aria-label="English" aria-current="true">EN</a></li></ul>
+        <button class="theme-toggle" type="button" data-theme-toggle data-label-auto="Auto" data-label-day="Day" data-label-night="Night">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z" fill="currentColor"/></svg>
+          <span class="sr-only">Switch between day and night theme: </span><span data-theme-label>Auto</span>
+        </button>
+      </div>
+      <a class="btn btn-small nav-cta" href="reserve.html">Book a table</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="section">
+  <div class="container" data-module="wine">
+    <h1>Wine list</h1>
+    <p class="section-lead">About 700 labels. Search and filter – and ask us for a recommendation.</p>
+    <p class="note demo-note" data-wine-demo>Demo data: these example entries show how the list works. The real list of about 700 labels will replace them.</p>
+    <form class="filters wine-filters" data-wine-filters role="search">
+      <div class="field grow"><label for="w-q">Search wine, producer or grape</label><input id="w-q" name="q" type="search" autocomplete="off"></div>
+      <div class="field"><label for="w-region">Region</label><select id="w-region" name="region"><option value="">Any</option></select></div>
+      <div class="field"><label for="w-colour">Colour</label>
+        <select id="w-colour" name="colour">
+          <option value="">Any</option>
+          <option value="red">Red</option><option value="white">White</option><option value="rose">Rosé</option>
+          <option value="sparkling">Sparkling</option><option value="sweet">Sweet</option>
+        </select></div>
+      <div class="field"><label for="w-price">Price</label>
+        <select id="w-price" name="price">
+          <option value="">Any</option><option value="1">€ · everyday</option><option value="2">€€ · good</option><option value="3">€€€ · special</option><option value="4">€€€€ · cellar treasures</option>
+        </select></div>
+      <button class="btn btn-small btn-ghost" type="reset">Reset</button>
+    </form>
+    <p class="results-count" data-wine-count aria-live="polite">Loading the wine list…</p>
+    <ul class="wine-list" data-wine-list></ul>
+    <div data-wine-sentinel aria-hidden="true"></div>
+    <noscript><p>The searchable wine list needs JavaScript. Please ask our staff for the printed list.</p></noscript>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <p class="footer-brand">Rifugio Scotoni</p>
+      <address>
+        Alpe Lagazuoi 2, San Cassiano, Alta Badia, South Tyrol<br>
+        <a href="mailto:info@scotoni.it">info@scotoni.it</a>
+        
+      </address>
+    </div>
+    <ul class="footer-links">
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="wine.html">Wine list</a></li>
+      <li><a href="ega-scotoni.html">Ega Scotoni</a></li>
+      <li><a href="admin.html" rel="nofollow">Staff</a></li>
+    </ul>
+  </div>
+  <div class="container footer-meta">
+    <p>© 2026 Rifugio Scotoni · Agreiter family</p>
+    <p class="muted">Website prototype – some details are still to be confirmed by the hut.</p>
+  </div>
+</footer>
+
+
+</body>
+</html>

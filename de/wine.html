@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Weinkarte – Rifugio Scotoni</title>
+  <meta name="description" content="Die Weinkarte des Rifugio Scotoni in Alta Badia nach Region, Weinart und Preis durchsuchen.">
+  <link rel="canonical" href="https://agreiterfelix08-afk.github.io/Scotoni/de/wine.html">
+  <link rel="alternate" hreflang="it" href="https://agreiterfelix08-afk.github.io/Scotoni/it/wine.html">
+  <link rel="alternate" hreflang="de" href="https://agreiterfelix08-afk.github.io/Scotoni/de/wine.html">
+  <link rel="alternate" hreflang="en" href="https://agreiterfelix08-afk.github.io/Scotoni/en/wine.html">
+  <link rel="alternate" hreflang="x-default" href="https://agreiterfelix08-afk.github.io/Scotoni/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Rifugio Scotoni">
+  <meta property="og:title" content="Weinkarte – Rifugio Scotoni">
+  <meta property="og:description" content="Die Weinkarte des Rifugio Scotoni in Alta Badia nach Region, Weinart und Preis durchsuchen.">
+  <meta property="og:url" content="https://agreiterfelix08-afk.github.io/Scotoni/de/wine.html">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:locale:alternate" content="it_IT">
+  <meta property="og:locale:alternate" content="en_GB">
+  <meta name="twitter:card" content="summary">
+  <meta name="theme-color" content="#f6f1e7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#151a2b" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+  <script>try{var t=localStorage.getItem("scotoni-theme");if(t==="day"||t==="night")document.documentElement.dataset.theme=t==="day"?"light":"dark"}catch(e){}</script>
+  <link rel="stylesheet" href="../src/styles/main.css">
+  <script type="module" src="../src/js/site.js"></script>
+  
+</head>
+<body data-page="wine">
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+<div class="alert-banner" id="alert-banner" role="status" data-dismiss="Schließen" data-label-weather="Wetterwarnung" data-label-kitchen="Hinweis der Küche" data-label-info="Hinweis" hidden></div>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M2 27 12 9l5 8 4-6 9 16z" fill="currentColor"/><path d="M12 9l2.6 4.7-2.6-1.4-2.4 1.6z" fill="var(--snow)"/></svg>
+      <span>Rifugio <strong>Scotoni</strong></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-bars" aria-hidden="true"></span>Menü
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="Hauptmenü">
+      <ul class="nav-links">
+        <li><a href="index.html#food">Küche</a></li>
+        <li><a href="wine.html">Weinkarte</a></li>
+        <li><a href="index.html#getting-here">Anreise</a></li>
+        <li><a href="index.html#rooms">Zimmer</a></li>
+        <li><a href="index.html#family">Familien</a></li>
+        <li><a href="ega-scotoni.html">Ega Scotoni</a></li>
+      </ul>
+      <div class="header-tools">
+        <ul class="lang-switch" aria-label="Sprache"><li><a href="../it/wine.html" hreflang="it" lang="it" data-set-lang="it" aria-label="Italiano">IT</a></li><li><a href="../de/wine.html" hreflang="de" lang="de" data-set-lang="de" aria-label="Deutsch" aria-current="true">DE</a></li><li><a href="../en/wine.html" hreflang="en" lang="en" data-set-lang="en" aria-label="English">EN</a></li></ul>
+        <button class="theme-toggle" type="button" data-theme-toggle data-label-auto="Auto" data-label-day="Tag" data-label-night="Nacht">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z" fill="currentColor"/></svg>
+          <span class="sr-only">Zwischen Tag- und Nachtdesign wechseln: </span><span data-theme-label>Auto</span>
+        </button>
+      </div>
+      <a class="btn btn-small nav-cta" href="reserve.html">Tisch reservieren</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="section">
+  <div class="container" data-module="wine">
+    <h1>Weinkarte</h1>
+    <p class="section-lead">Rund 700 Etiketten. Suchen und filtern – und fragen Sie uns nach einer Empfehlung.</p>
+    <p class="note demo-note" data-wine-demo>Demodaten: Diese Beispieleinträge zeigen, wie die Karte funktioniert. Sie werden durch die echte Karte mit rund 700 Etiketten ersetzt.</p>
+    <form class="filters wine-filters" data-wine-filters role="search">
+      <div class="field grow"><label for="w-q">Wein, Weingut oder Rebsorte suchen</label><input id="w-q" name="q" type="search" autocomplete="off"></div>
+      <div class="field"><label for="w-region">Region</label><select id="w-region" name="region"><option value="">Alle</option></select></div>
+      <div class="field"><label for="w-colour">Weinart</label>
+        <select id="w-colour" name="colour">
+          <option value="">Alle</option>
+          <option value="red">Rot</option><option value="white">Weiß</option><option value="rose">Rosé</option>
+          <option value="sparkling">Schaumwein</option><option value="sweet">Süßwein</option>
+        </select></div>
+      <div class="field"><label for="w-price">Preis</label>
+        <select id="w-price" name="price">
+          <option value="">Alle</option><option value="1">€ · für jeden Tag</option><option value="2">€€ · gut</option><option value="3">€€€ · besonders</option><option value="4">€€€€ · Kellerschätze</option>
+        </select></div>
+      <button class="btn btn-small btn-ghost" type="reset">Zurücksetzen</button>
+    </form>
+    <p class="results-count" data-wine-count aria-live="polite">Weinkarte wird geladen…</p>
+    <ul class="wine-list" data-wine-list></ul>
+    <div data-wine-sentinel aria-hidden="true"></div>
+    <noscript><p>Die durchsuchbare Weinkarte braucht JavaScript. Fragen Sie unser Personal nach der gedruckten Karte.</p></noscript>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <p class="footer-brand">Rifugio Scotoni</p>
+      <address>
+        Alpe Lagazuoi 2, San Cassiano, Alta Badia, South Tyrol<br>
+        <a href="mailto:info@scotoni.it">info@scotoni.it</a>
+        
+      </address>
+    </div>
+    <ul class="footer-links">
+      <li><a href="privacy.html">Datenschutz</a></li>
+      <li><a href="wine.html">Weinkarte</a></li>
+      <li><a href="ega-scotoni.html">Ega Scotoni</a></li>
+      <li><a href="admin.html" rel="nofollow">Personal</a></li>
+    </ul>
+  </div>
+  <div class="container footer-meta">
+    <p>© 2026 Rifugio Scotoni · Familie Agreiter</p>
+    <p class="muted">Prototyp der Website – einige Angaben muss die Hütte noch bestätigen.</p>
+  </div>
+</footer>
+
+
+</body>
+</html>

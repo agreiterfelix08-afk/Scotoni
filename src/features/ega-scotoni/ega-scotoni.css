@@ -1,0 +1,7 @@
+/* Ega Scotoni — styles scoped to the feature. Delete with the folder. */
+.ega-teaser { background: linear-gradient(135deg, var(--accent-soft), var(--bg-alt)); }
+.ega-teaser-inner { max-width: 44rem; text-align: center; }
+.ega-teaser-inner .eyebrow { color: var(--accent-text); }
+.ega-page h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); }
+.ega-blocks { list-style: none; padding: 0; }
+.ega-blocks h2 { font-size: 1.25rem; }

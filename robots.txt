@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /Scotoni/it/admin.html
+Disallow: /Scotoni/de/admin.html
+Disallow: /Scotoni/en/admin.html
+
+Sitemap: https://agreiterfelix08-afk.github.io/Scotoni/sitemap.xml
