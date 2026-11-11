@@ -7,6 +7,23 @@ bot and start it again so it picks up the new values.
 Secrets (the Anthropic API key) are NOT stored here. They go in the `.env` file.
 """
 
+import os
+from pathlib import Path
+
+from dotenv import load_dotenv
+
+load_dotenv(Path(__file__).parent / ".env")  # reads the .env file
+
+# ---------------------------------------------------------------------------
+# 0. Test version (on your personal Gmail)
+# ---------------------------------------------------------------------------
+# TEST_MODE = True: the bot ONLY looks at emails with the word below in the
+# subject (e.g. "TESTBOT Do you allow dogs?"). All your other emails are left
+# completely alone: no labels, no drafts, nothing.
+# Set it to False only when the bot runs on info@scotoni.it for real.
+TEST_MODE = True
+TEST_SUBJECT_WORD = "TESTBOT"
+
 # ---------------------------------------------------------------------------
 # 1. The most important switch
 # ---------------------------------------------------------------------------
@@ -22,7 +39,11 @@ MODE = "draft"
 # ---------------------------------------------------------------------------
 # The bot never answers emails that come FROM this address (stops it from
 # replying to itself in a loop).
-OUR_ADDRESS = "info@scotoni.it"
+#
+# The address of the Gmail account the bot is logged in to. It is written in
+# the .env file (BOT_EMAIL=...), so your personal address never ends up on
+# GitHub. If BOT_EMAIL is missing, info@scotoni.it is used.
+OUR_ADDRESS = os.getenv("BOT_EMAIL", "").strip() or "info@scotoni.it"
 
 # Any other addresses that belong to us (e.g. a personal address that forwards
 # to info@). Emails from these are never answered either.

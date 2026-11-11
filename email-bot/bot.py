@@ -17,6 +17,7 @@ What it does for each new unread email:
 
 import csv
 import json
+import re
 import sys
 import time
 import traceback
@@ -71,8 +72,25 @@ def save_processed(ids: set[str]):
 
 
 # --- One email --------------------------------------------------------------
+def is_test_email(email: dict) -> bool:
+    return config.TEST_SUBJECT_WORD.lower() in email.get("subject", "").lower()
+
+
+def without_test_word(email: dict) -> dict:
+    """A copy of the email with the test word removed from the subject, so
+    Claude reads the email exactly as a real guest would have written it."""
+    cleaned = re.sub(re.escape(config.TEST_SUBJECT_WORD), "", email.get("subject", ""), flags=re.I)
+    return {**email, "subject": " ".join(cleaned.split())}
+
+
 def handle_email(service, email: dict, labels: dict):
     own = classifier.own_addresses()
+
+    # Test version: never touch anything without the test word in the subject
+    if config.TEST_MODE:
+        if not is_test_email(email):
+            log(email, "SKIPPED", "nothing", "Test mode: no test word in the subject.")
+            return
 
     # Quick free checks first (no Claude call)
     shortcut = classifier.pre_filter(email)
@@ -86,7 +104,9 @@ def handle_email(service, email: dict, labels: dict):
         log(email, "NEEDS_HUMAN", "labelled Needs human", "We already replied or drafted in this thread.")
         return
 
-    decision, _ = classifier.classify(email)
+    # Claude reads the email without the test word (the reply keeps the
+    # original subject so Gmail puts it in the same conversation).
+    decision, _ = classifier.classify(without_test_word(email) if config.TEST_MODE else email)
 
     if decision.category == classifier.IGNORE:
         log(email, "IGNORE", "nothing", decision.reason, decision.topic, decision.language)
@@ -129,7 +149,9 @@ def main():
     if config.MODE not in ("draft", "send"):
         raise SystemExit('MODE in config.py must be "draft" or "send".')
 
-    print(f"Rifugio Scotoni email bot starting. MODE = {config.MODE!r}")
+    print(f"Rifugio Scotoni email bot starting. MODE = {config.MODE!r}, account = {config.OUR_ADDRESS}")
+    if config.TEST_MODE:
+        print(f"TEST MODE: only emails with '{config.TEST_SUBJECT_WORD}' in the subject are handled.")
     service = gmail_client.connect()
     labels = {
         "human": gmail_client.get_or_create_label(service, config.LABEL_NEEDS_HUMAN, config.LABEL_NEEDS_HUMAN_COLOR),

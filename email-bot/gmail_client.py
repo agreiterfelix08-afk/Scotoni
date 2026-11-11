@@ -84,6 +84,8 @@ def list_new_message_ids(service) -> list[str]:
         f"in:inbox is:unread newer_than:{config.ONLY_NEWER_THAN_DAYS}d "
         f'-label:"{config.LABEL_NEEDS_HUMAN}" -label:"{config.LABEL_BOT_REPLIED}"'
     )
+    if config.TEST_MODE:
+        query += f" subject:{config.TEST_SUBJECT_WORD}"  # test version: only test emails
     result = service.users().messages().list(
         userId="me", q=query, maxResults=config.MAX_EMAILS_PER_RUN
     ).execute()

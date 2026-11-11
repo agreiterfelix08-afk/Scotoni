@@ -10,12 +10,16 @@ A small program that runs on your Mac, checks **info@scotoni.it** every 5 minute
 
 Every action is written as one line in `bot_log.csv` (you can open it with Numbers or Excel).
 
+> **Trying it out first on your personal Gmail?** Follow [TEST.md](TEST.md) instead of the steps below. The test
+> version only touches emails with **TESTBOT** in the subject and only writes drafts.
+
 ## What's in this folder
 
 | File | What it is | Do you edit it? |
 |---|---|---|
 | `knowledge_base.md` | The only facts the bot may use | **Yes**, whenever something changes |
-| `config.py` | All settings, including `MODE = "draft"` / `"send"` | Sometimes |
+| `config.py` | All settings, including `MODE = "draft"` / `"send"` and `TEST_MODE` | Sometimes |
+| `TEST.md` / `setup_mac.sh` | Test version on your personal Gmail / one-time install helper | No |
 | `bot.py` | The main program | No |
 | `classifier.py` | Talks to Claude: the rules for deciding and writing replies | Only to change the rules |
 | `gmail_client.py` | Talks to Gmail | No |
@@ -88,7 +92,9 @@ You can also check by hand: in Terminal type `dig MX scotoni.it +short`. If the 
    cp .env.example .env
    open -e .env
    ```
-   TextEdit opens. Replace `sk-ant-put-your-key-here` with your key, save (`⌘ S`), close.
+   TextEdit opens. Replace `sk-ant-put-your-key-here` with your key and set `BOT_EMAIL=info@scotoni.it`,
+   save (`⌘ S`), close. (Or run `bash setup_mac.sh`, which asks for both and does steps 1.4 and 3.4 for you.)
+   In `config.py`, set `TEST_MODE = False` for the real inbox.
 
 Cost: roughly 1–3 cents per email that Claude reads. Newsletters and no-reply senders are filtered out before
 Claude, so they cost nothing.

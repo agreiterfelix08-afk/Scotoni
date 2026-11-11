@@ -83,13 +83,15 @@ class ReplyFormat(unittest.TestCase):
 class MainFlow(unittest.TestCase):
     """bot.handle_email with a fake Gmail and a fake Claude."""
 
-    def run_flow(self, decision=None, already_handled=False, sender="guest@example.com", mode="draft"):
+    def run_flow(self, decision=None, already_handled=False, sender="guest@example.com", mode="draft",
+                 test_mode=False, subject="Dogs?"):
         from unittest import mock
         import bot
         import config
         e = {"id": "M1", "thread_id": "T1", "from_address": sender, "headers": {}, "body": "Dogs?",
-             "subject": "Dogs?", "reply_to": sender, "message_id_header": "", "references": ""}
+             "subject": subject, "reply_to": sender, "message_id_header": "", "references": ""}
         with mock.patch.object(config, "MODE", mode), \
+             mock.patch.object(config, "TEST_MODE", test_mode), \
              mock.patch.object(bot, "log"), \
              mock.patch.object(gmail_client, "thread_already_handled", return_value=already_handled), \
              mock.patch.object(gmail_client, "add_labels") as add_labels, \
@@ -132,6 +134,19 @@ class MainFlow(unittest.TestCase):
         ask.assert_not_called()
         create_draft.assert_not_called()
         add_labels.assert_not_called()
+
+    def test_test_mode_skips_normal_emails(self):
+        add_labels, create_draft, send_reply, ask = self.run_flow(test_mode=True, subject="Dinner on Friday?")
+        ask.assert_not_called()
+        add_labels.assert_not_called()
+        create_draft.assert_not_called()
+
+    def test_test_mode_handles_test_emails_and_hides_the_word_from_claude(self):
+        add_labels, create_draft, send_reply, ask = self.run_flow(test_mode=True, subject="TESTBOT Dogs allowed?")
+        self.assertEqual(ask.call_args.args[0]["subject"], "Dogs allowed?")
+        create_draft.assert_called_once()
+        # the reply keeps the original subject so Gmail threads it correctly
+        self.assertEqual(create_draft.call_args.args[1]["subject"], "TESTBOT Dogs allowed?")
 
 
 if __name__ == "__main__":
