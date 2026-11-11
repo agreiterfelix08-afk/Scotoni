@@ -1,0 +1,16 @@
+# Secrets: never commit these
+.env
+credentials.json
+token.json
+client_secret*.json
+
+# Files the bot writes while running (contain guest emails/addresses)
+bot_log.csv
+processed_ids.json
+bot_output.log
+bot_errors.log
+
+# Python
+.venv/
+__pycache__/
+*.pyc

@@ -14,6 +14,7 @@ prototype of a fair table reservation system.
 | [docs/TODO-FOR-THE-HUT.md](docs/TODO-FOR-THE-HUT.md) | Every value we still need from you (altitude, hours, tables, prices, photos, Ega Scotoni …). |
 | [docs/REVIEW.md](docs/REVIEW.md) | Audit of the first version and what was fixed. |
 | [docs/TECHNICAL.md](docs/TECHNICAL.md) | Architecture, commands, how to connect a real backend. |
+| [email-bot/README.md](email-bot/README.md) | Email auto-reply bot for info@scotoni.it (Python, runs on a Mac): setup guide step by step. |
 
 Almost everything you'll want to change is in **`src/data/hut.config.js`**.
 
